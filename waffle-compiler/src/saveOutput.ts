@@ -21,7 +21,6 @@ export interface ContractJson {
   srcmap?: string;
   bin?: string;
   'bin-runtime'?: string;
-  interface?: object[];
   abi: object[];
   bytecode?: string;
   humanReadableAbi?: string[];
@@ -98,7 +97,6 @@ async function saveOutputCombined(
 }
 
 function getContent(contractJson: ContractJson, config: Config) {
-  contractJson.interface = contractJson.abi;
   contractJson.bytecode = contractJson.evm.bytecode.object;
   if (config.outputHumanReadableAbi) {
     contractJson.humanReadableAbi = getHumanReadableAbi(contractJson.abi);
